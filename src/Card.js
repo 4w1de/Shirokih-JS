@@ -1,7 +1,7 @@
 import React from 'react';
-import './CardStyle.css'
+import './Card.css'
 
-function CardComponent(props) {
+function Card(props) {
     return (
         <div>
             <div className="Div-card">
@@ -17,4 +17,4 @@ function CardComponent(props) {
     );
 }
 
-export default CardComponent;
+export default Card;

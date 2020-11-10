@@ -1,6 +1,6 @@
 import React from 'react';
 
-function HeaderComponent(props) {
+function Header(props) {
     const styleHeader = {
         width: '100%',
         height: 100,
@@ -22,4 +22,4 @@ function HeaderComponent(props) {
     );
 }
 
-export default HeaderComponent;
+export default Header;

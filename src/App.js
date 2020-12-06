@@ -1,11 +1,12 @@
 import Header from "./Header";
-import Card from "./Card";
+import React from "react";
+import Body from "./Body";
 
 function App() {
   return (
       <div>
         <Header />
-        <Card />
+        <Body />
       </div>
   );
 }

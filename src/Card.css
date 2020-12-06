@@ -33,10 +33,10 @@
     word-break: break-all;
     text-align: center;
 }
-.Div-card-caption label input {
+.Input-check {
     display: none;
 }
-.Div-card-caption label{
+.Label-check{
     display: flex;
     margin: 10px 5px 10px;
 }
@@ -59,8 +59,35 @@
     background-size: cover;
     opacity: 0;
 }
-.Div-card-caption label input:checked + .Checkmark::before {
+.Input-check:checked + .Checkmark::before {
     opacity: 1;
+}
+.Checkmark-app {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border: 2px solid orangered;
+    background: url(nvo.png);
+    background-size: cover;
+    cursor: pointer;
+}
+.Checkmark-app::before{
+    content: "";
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: url(vo.png);
+    background-size: cover;
+    opacity: 0;
+}
+.Input-check:checked + .Checkmark-app::before {
+    opacity: 1;
+}
+.Input-check:checked + .Checkmark-app {
+    background: none;
 }
 hr {
     width: 200px;
@@ -91,4 +118,16 @@ textarea {
     box-shadow: -10px 0 15px #2727b6;
     resize: none;
     outline: none;
+}
+.Div-check {
+    margin: 50px 0 -50px 100px;
+    display: flex;
+}
+.Div-view-edit {
+    height: 29px;
+    margin-top: 10px;
+    line-height: 29px;
+    font-family: "Comic Sans MS", "Arial";
+    font-size: 20px;
+    font-weight: bolder;
 }

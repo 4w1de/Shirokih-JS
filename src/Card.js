@@ -15,6 +15,13 @@ class Card extends Component {
         this.changeMode=this.changeMode.bind(this);
         this.changeText=this.changeText.bind(this);
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.valueView !== true) {
+            this.setState({editMode: false})
+        }
+    }
+
     handleChange() {
         this.setState({
             checked: !this.state.checked
@@ -36,57 +43,86 @@ class Card extends Component {
 
     render() {
         return (
-            this.state.editMode ? (
-                <div>
-                    <div className="Div-card">
-                        <div className="Div-card-caption">
-                            <input
-                                type="text"
-                                className="editHeader"
-                                defaultValue={this.state.textHeader}
-                                ref={(ref) => { this.newTextHeader = ref; }}
-                            />
-                            <GrFormCheckmark
-                                size="40px"
-                                style={{margin: "5px 0 0", cursor: "pointer"}}
-                                onClick={this.changeText}
-                            />
-                            <GrFormClose
-                                size="40px"
-                                style={{margin: "5px 0 0", cursor: "pointer"}}
-                                onClick={this.changeMode}
-                            />
-                        </div>
-                        <hr />
-                        <div className="Div-card-text">
-                            <textarea ref={(ref) => { this.newTextCard = ref; }}>
-                                {this.state.textCard}
-                            </textarea>
-                        </div>
-                    </div>
-                </div>
-            ) : (
-                <div>
+
+            this.props.valueView ? (
+                   (<div>
                     <div className={this.state.checked ? 'Div-card-new' : 'Div-card'}>
                         <div className="Div-card-caption">
                             <h1 className={this.state.checked ? 'Caption-new' : 'Caption'}>{this.state.textHeader}</h1>
-                            <GrEdit
-                                size="26px"
-                                style={{margin: "10px 5px 10px", cursor: "pointer"}}
-                                onClick={this.changeMode}
-                            />
-                            <label>
-                                <input type="checkbox" onChange={this.handleChange} />
-                                <div className="Checkmark" />
+                            <div style={{width: "36px"}}/>
+                            <label className="Label-check">
+                                <input type="checkbox" className="Input-check" onChange={this.handleChange}/>
+                                <div className="Checkmark"/>
                             </label>
                         </div>
-                        <hr />
+                        <hr/>
                         <div className="Div-card-text">
                             <p>{this.state.textCard}</p>
                         </div>
                     </div>
-                </div>
+                </div>)
+            ) : (
+
+                this.state.editMode ? (
+                    <div>
+                        <div className="Div-card">
+                            <div className="Div-card-caption">
+                                <input
+                                    type="text"
+                                    className="editHeader"
+                                    defaultValue={this.state.textHeader}
+                                    ref={(ref) => {
+                                        this.newTextHeader = ref;
+                                    }}
+                                />
+                                <GrFormCheckmark
+                                    size="40px"
+                                    style={{margin: "5px 0 0", cursor: "pointer"}}
+                                    onClick={this.changeText}
+                                />
+                                <GrFormClose
+                                    size="40px"
+                                    style={{margin: "5px 0 0", cursor: "pointer"}}
+                                    onClick={this.changeMode}
+                                />
+                            </div>
+                            <hr/>
+                            <div className="Div-card-text">
+                                    <textarea ref={(ref) => {
+                                        this.newTextCard = ref;
+                                    }}>
+                                        {this.state.textCard}
+                                    </textarea>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div>
+                        <div className={this.state.checked ? 'Div-card-new' : 'Div-card'}>
+                            <div className="Div-card-caption">
+                                <h1 className={this.state.checked ? 'Caption-new' : 'Caption'}>{this.state.textHeader}</h1>
+                                {!this.props.valueView ? (
+                                    <GrEdit
+                                        size="26px"
+                                        style={{margin: "10px 5px 10px", cursor: "pointer"}}
+                                        onClick={this.changeMode}
+                                    />
+                                ) : (<div style={{width: "36px"}}/>)}
+                                <label className="Label-check">
+                                    <input type="checkbox" className="Input-check" onChange={this.handleChange}/>
+                                    <div className="Checkmark"/>
+                                </label>
+                            </div>
+                            <hr/>
+                            <div className="Div-card-text">
+                                <p>{this.state.textCard}</p>
+                            </div>
+                        </div>
+                    </div>
+                )
+
             )
+
         )
     }
 }

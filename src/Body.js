@@ -20,9 +20,9 @@ class Body extends Component {
         })
     }
     render() {
-        var mas = [];
+        let mas = [];
         for(let i=0; i<7; i++) {
-            mas.push(<Card valueView={this.state.viewOnly} />);
+            mas.push(<Card key={i} valueView={this.state.viewOnly} />);
         }
         return (
             <div>
@@ -33,7 +33,7 @@ class Body extends Component {
                     </label>
                     <div className="Div-view-edit">{this.state.textCheck}</div>
                 </div>
-                {mas}
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>{mas}</div>
             </div>
         );
     }

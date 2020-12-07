@@ -16,10 +16,13 @@ class Card extends Component {
         this.changeText=this.changeText.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props.valueView !== true) {
-            this.setState({editMode: false})
+    static getDerivedStateFromProps(props, state) {
+        if (props.valueView !== false) {
+            return {
+                editMode: false
+            };
         }
+        return null;
     }
 
     handleChange() {
@@ -88,10 +91,10 @@ class Card extends Component {
                             </div>
                             <hr/>
                             <div className="Div-card-text">
-                                    <textarea ref={(ref) => {
+                                    <textarea value={this.props.textCard} defaultValue={this.state.textCard} ref={(ref) => {
                                         this.newTextCard = ref;
                                     }}>
-                                        {this.state.textCard}
+
                                     </textarea>
                             </div>
                         </div>

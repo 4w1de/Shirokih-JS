@@ -46,26 +46,24 @@ class Card extends Component {
 
     render() {
         return (
-
             this.props.valueView ? (
-                   (<div>
-                    <div className={this.state.checked ? 'Div-card-new' : 'Div-card'}>
-                        <div className="Div-card-caption">
-                            <h1 className={this.state.checked ? 'Caption-new' : 'Caption'}>{this.state.textHeader}</h1>
-                            <div style={{width: "36px"}}/>
-                            <label className="Label-check">
-                                <input type="checkbox" className="Input-check" onChange={this.handleChange}/>
-                                <div className="Checkmark"/>
-                            </label>
-                        </div>
-                        <hr/>
-                        <div className="Div-card-text">
-                            <p>{this.state.textCard}</p>
-                        </div>
+               <div>
+                   <div className={this.state.checked ? 'Div-card-new' : 'Div-card'}>
+                       <div className="Div-card-caption">
+                           <h1 className={this.state.checked ? 'Caption-new' : 'Caption'}>{this.state.textHeader}</h1>
+                           <div style={{width: "36px"}}/>
+                           <label className="Label-check">
+                               <input type="checkbox" className="Input-check" onChange={this.handleChange}/>
+                               <div className="Checkmark"/>
+                           </label>
+                       </div>
+                       <hr/>
+                       <div className="Div-card-text">
+                           <p>{this.state.textCard}</p>
+                       </div>
                     </div>
-                </div>)
+               </div>
             ) : (
-
                 this.state.editMode ? (
                     <div>
                         <div className="Div-card">
@@ -93,9 +91,7 @@ class Card extends Component {
                             <div className="Div-card-text">
                                     <textarea value={this.props.textCard} defaultValue={this.state.textCard} ref={(ref) => {
                                         this.newTextCard = ref;
-                                    }}>
-
-                                    </textarea>
+                                    }} />
                             </div>
                         </div>
                     </div>
@@ -123,9 +119,7 @@ class Card extends Component {
                         </div>
                     </div>
                 )
-
             )
-
         )
     }
 }

@@ -1,8 +1,29 @@
 import React, {Component} from 'react';
 import Card from "./Card";
 import './Card.css';
+import styled from "styled-components";
+import Vo from "./vo.png";
+import Nvo from "./nvo.png";
+
+const Label = styled.label`
+  display: flex;
+  margin: 10px 5px 10px;
+`;
+const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
+  display: none;
+`;
+const Checkmark = styled.div`
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: 2px solid orangered;
+  background: url(${props => props.imgCheck ? Vo : Nvo});
+  background-size: cover;
+  cursor: pointer;
+`;
 
 class Body extends Component {
+
     constructor(props) {
         super(props);
         this.state={
@@ -19,6 +40,7 @@ class Body extends Component {
             textCheck: !this.state.viewOnly ? "ТОЛЬКО ПРОСМОТР" : "ПРОСМОТР И РЕДАКТИРОВАНИЕ"
         })
     }
+
     render() {
         let mas = [];
         for(let i=0; i<7; i++) {
@@ -27,10 +49,10 @@ class Body extends Component {
         return (
             <div>
                 <div className="Div-check">
-                    <label className="Label-check">
-                        <input type="checkbox" className="Input-check" onChange={this.changeView} />
-                        <div className="Checkmark-app" />
-                    </label>
+                    <Label>
+                        <HiddenCheckbox onChange={this.changeView} />
+                        <Checkmark imgCheck={this.state.viewOnly} />
+                    </Label>
                     <div className="Div-view-edit">{this.state.textCheck}</div>
                 </div>
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>{mas}</div>

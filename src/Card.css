@@ -120,7 +120,7 @@ textarea {
     outline: none;
 }
 .Div-check {
-    margin: 50px 0 -50px 100px;
+    margin: 50px 0 0 100px;
     display: flex;
 }
 .Div-view-edit {

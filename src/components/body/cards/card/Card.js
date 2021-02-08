@@ -1,24 +1,35 @@
-import React, {useState} from 'react';
-import CardHeader from './Card/CardHeader';
-import CardBody from './Card/CardBody';
+import React, { useState } from 'react';
+import CardHeader from './CardHeader';
+import CardBody from './CardBody';
+import './Card.css';
 
-function Card({card, viewOnly, changeCheck, changeMode, changeText, setNewText, ...props}) {
-    
-    var [state, setState] = useState({newTextHeader: card.title, newTextBody: card.text});
+function Card({
+    card,
+    viewOnly,
+    changeCheck,
+    changeMode,
+    changeText,
+    setNewText,
+    ...props
+}) {
+    var [state, setState] = useState({
+        newTextHeader: card.title,
+        newTextBody: card.text,
+    });
 
     const tmpChange = () => {
         changeText(card.id, state.newTextHeader, state.newTextBody);
-    }
+    };
     const tmpChangeMode = () => {
         setState({
-            newTextHeader: card.title, 
-            newTextBody: card.text
+            newTextHeader: card.title,
+            newTextBody: card.text,
         });
         changeMode();
-    }
+    };
 
-    return(
-        <div className={card.checked ? "divCard" : "divCard new"}>
+    return (
+        <div className={card.checked ? 'divCard' : 'divCard new'}>
             <CardHeader
                 title={card.title}
                 viewOnly={viewOnly}
@@ -31,7 +42,7 @@ function Card({card, viewOnly, changeCheck, changeMode, changeText, setNewText, 
                 changeText={changeText}
                 tmpChange={tmpChange}
             />
-            <hr style={{width: 380, margin: "0 auto"}} />
+            <hr />
             <CardBody
                 text={card.text}
                 state={state}
@@ -39,7 +50,7 @@ function Card({card, viewOnly, changeCheck, changeMode, changeText, setNewText, 
                 editMode={card.editMode}
             />
         </div>
-    )
+    );
 }
 
 export default Card;

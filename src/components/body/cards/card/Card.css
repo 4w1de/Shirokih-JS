@@ -1,0 +1,60 @@
+.divCard {
+    width: 400px;
+    height: 500px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(0, 0, 0, 0.39);
+    color: white;
+    border: 2px ridge white;
+}
+.new {
+    background-color: rgba(201, 25, 25, 0.39);
+    border: 2px solid black;
+}
+hr {
+    width: 380px;
+    margin: 0 auto;
+}
+.cardHeader {
+    width: 95%;
+    height: 50px;
+    margin: 10px auto;
+    display: flex;
+}
+.bodyText {
+    word-break: break-all;
+}
+textarea {
+    width: 95%;
+    height: 350px;
+    margin: 0 auto;
+    padding: 10px;
+    outline: none;
+    border: 2px inset rgb(134, 134, 134);
+    background: none;
+    color: white;
+    resize: none;
+}
+.divEmpty {
+    margin: auto 0;
+    margin-left: auto;
+}
+.checkbox {
+    transform: scale(2);
+    margin: auto 15px;
+}
+h3 {
+    width: 70%;
+    margin: auto 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.input {
+    background-color: rgba(138, 138, 138, 0.493);
+    font-size: 19px;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+}

@@ -1,14 +1,16 @@
-import Header from "./Header";
-import React from "react";
-import Body from "./Body";
+import React from 'react';
+import Body from './components/body/Body';
+import Header from './components/header/Header';
 
-function App() {
-  return (
-      <div>
-        <Header />
-        <Body />
-      </div>
-  );
+class App extends React.Component {
+    render() {
+        return (
+            <>
+                <Header />
+                <Body />
+            </>
+        );
+    }
 }
 
 export default App;

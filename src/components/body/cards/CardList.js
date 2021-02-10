@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from './card/Card';
-import { AiOutlineDelete } from 'react-icons/ai';
+import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai';
 import './CardList.css';
+import { v4 as uuidv4 } from 'uuid';
 
 class CardList extends React.Component {
     constructor() {
@@ -84,6 +85,7 @@ class CardList extends React.Component {
         this.changeMode = this.changeMode.bind(this);
         this.changeText = this.changeText.bind(this);
         this.deleteCard = this.deleteCard.bind(this);
+        this.addCard = this.addCard.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -151,18 +153,42 @@ class CardList extends React.Component {
             cards: prevState.cards.filter((card) => card.checked !== true),
         }));
     }
+    addCard() {
+        this.setState({
+            cards: [
+                ...this.state.cards,
+                {
+                    id: uuidv4(),
+                    title: '',
+                    text: '',
+                    checked: false,
+                    editMode: false,
+                },
+            ],
+        });
+    }
 
     render() {
         return (
             <>
-                <label className="labelDel" onClick={this.deleteCard}>
-                    <AiOutlineDelete
-                        size="50px"
-                        color="white"
-                        style={{ margin: 'auto 0' }}
-                    />
-                    <h2>УДАЛИТЬ</h2>
-                </label>
+                <div className="divButton">
+                    <label className="labelDel" onClick={this.addCard}>
+                        <AiOutlinePlus
+                            size="50px"
+                            color="white"
+                            style={{ margin: 'auto 0' }}
+                        />
+                        <h2>ДОБАВИТЬ</h2>
+                    </label>
+                    <label className="labelDel" onClick={this.deleteCard}>
+                        <AiOutlineDelete
+                            size="50px"
+                            color="white"
+                            style={{ margin: 'auto 0' }}
+                        />
+                        <h2>УДАЛИТЬ</h2>
+                    </label>
+                </div>
                 <div className="divCards">
                     {this.state.cards.map((card) => (
                         <Card

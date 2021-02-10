@@ -155,14 +155,16 @@ class CardList extends React.Component {
     }
     addCard() {
         this.setState({
-            cards:
-                this.state.cards.push({
+            cards: [
+                ...this.state.cards,
+                {
                     id: uuidv4(),
                     title: '',
                     text: '',
                     checked: false,
                     editMode: false,
-                }) && this.state.cards,
+                },
+            ],
         });
     }
 

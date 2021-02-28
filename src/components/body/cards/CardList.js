@@ -8,7 +8,6 @@ class CardList extends React.Component {
     constructor() {
         super();
         this.state = {
-            cardsCount: 0,
             cards: [
                 {
                     id: 0,
@@ -156,7 +155,6 @@ class CardList extends React.Component {
     }
     addCard() {
         this.setState({
-            cardsCount: this.state.cardsCount + 1,
             cards: [
                 ...this.state.cards,
                 {

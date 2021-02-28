@@ -1,0 +1,61 @@
+.divSpinner {
+    background-color: rgb(51, 51, 51);
+    position: relative;
+    width: 400px;
+    height: 500px;
+    margin: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.facebook {
+    width: 70px;
+    margin: 200px auto;
+}
+.facebook div {
+    height: 50px;
+    width: 20px;
+    display: inline-block;
+    background-color: #db5656;
+    border: 1px solid #992121;
+
+    -webkit-animation: facebook_loader 1.3s linear infinite;
+    animation: facebook_loader 1.3s linear infinite;
+
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+}
+.facebook div:nth-child(1) {
+    -webkit-animation-delay: 0.39s;
+    animation-delay: 0.39s;
+}
+.facebook div:nth-child(2) {
+    -webkit-animation-delay: 0.52s;
+    animation-delay: 0.52s;
+}
+.facebook div:nth-child(3) {
+    -webkit-animation-delay: 0.65s;
+    animation-delay: 0.65s;
+}
+@-webkit-keyframes facebook_loader {
+    0% {
+        -webkit-transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: scale(0.7);
+        opacity: 0.1;
+    }
+}
+
+@keyframes facebook_loader {
+    0% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.7);
+        opacity: 0.1;
+    }
+}

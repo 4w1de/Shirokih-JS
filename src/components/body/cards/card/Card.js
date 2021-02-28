@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import './Card.css';
+import withLoadingDelay from '../../../../hoc/withLoadingDelay';
 
 function Card({
     card,
@@ -53,4 +54,4 @@ function Card({
     );
 }
 
-export default Card;
+export default withLoadingDelay(Card);

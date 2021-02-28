@@ -37,6 +37,7 @@ class Body extends React.Component {
         this.state = {
             viewOnly: false,
             textCheck: 'ПРОСМОТР И РЕДАКТИРОВАНИЕ',
+            count: 10,
         };
         this.changeView = this.changeView.bind(this);
     }

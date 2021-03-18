@@ -143,7 +143,6 @@ class CardContext extends React.Component {
         this.setState((prevState) => ({
             cards: prevState.cards.filter((card) => card.checked !== true),
         }));
-        //this.setState(() => ({ countCard: this.state.cards.length }));
     };
     addCard = () => {
         this.setState({

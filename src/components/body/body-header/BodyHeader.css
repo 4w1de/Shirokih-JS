@@ -1,0 +1,13 @@
+.divButton {
+    display: flex;
+}
+.labelBtn {
+    display: flex;
+    width: 170px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+h2 {
+    color: white;
+    font-weight: bolder;
+}

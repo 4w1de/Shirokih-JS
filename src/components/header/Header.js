@@ -1,18 +1,29 @@
 import React from 'react';
+import { CardsContextConsumer } from '../../context/CardContext';
+import './Header.css';
+import Badge from 'react-bootstrap/Badge';
+import Button from 'react-bootstrap/Button';
 
-function Header() {
-    const styleHeader = {
-        width: '100%',
-        height: 100,
-        backgroundColor: 'rgb(145, 145, 145)',
-        fontSize: '60px',
-        fontWeight: 'bolder',
-        fontFamily: 'Comic Sans MS, Arial',
-        color: 'white',
-        textAlign: 'center',
-        textShadow: '2px 5px 1px black',
-    };
-    return <header style={styleHeader}>текст header</header>;
+class Header extends React.Component {
+    render() {
+        return (
+            <CardsContextConsumer>
+                {(context) => (
+                    <header className="styleHeader">
+                        текст header
+                        <div>
+                            <Button variant="primary">
+                                Cards{' '}
+                                <Badge variant="light">
+                                    {context.cardsCount}
+                                </Badge>
+                            </Button>
+                        </div>
+                    </header>
+                )}
+            </CardsContextConsumer>
+        );
+    }
 }
 
 export default Header;

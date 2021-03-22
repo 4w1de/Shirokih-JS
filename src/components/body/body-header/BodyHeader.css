@@ -1,0 +1,15 @@
+.divButton {
+    display: flex;
+}
+.labelBtn {
+    display: flex;
+    width: 170px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+h2 {
+    font-size: 1.5em;
+    color: white;
+    font-weight: bolder;
+    margin: auto 0;
+}

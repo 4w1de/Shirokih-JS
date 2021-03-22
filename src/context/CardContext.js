@@ -1,12 +1,12 @@
 import React from 'react';
-import Card from './card/Card';
-import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai';
-import './CardList.css';
 import { v4 as uuidv4 } from 'uuid';
 
-class CardList extends React.Component {
+const { Provider, Consumer } = React.createContext();
+
+class CardContext extends React.Component {
     constructor() {
         super();
+
         this.state = {
             cards: [
                 {
@@ -58,27 +58,6 @@ class CardList extends React.Component {
                     checked: false,
                     editMode: false,
                 },
-                {
-                    id: 7,
-                    title: 'Карточка 7',
-                    text: 'Текст карточки 7',
-                    checked: false,
-                    editMode: false,
-                },
-                {
-                    id: 8,
-                    title: 'Карточка 8',
-                    text: 'Текст карточки 8',
-                    checked: false,
-                    editMode: false,
-                },
-                {
-                    id: 9,
-                    title: 'Карточка 9',
-                    text: 'Текст карточки 9',
-                    checked: false,
-                    editMode: false,
-                },
             ],
         };
         this.changeCheck = this.changeCheck.bind(this);
@@ -86,21 +65,7 @@ class CardList extends React.Component {
         this.changeText = this.changeText.bind(this);
         this.deleteCard = this.deleteCard.bind(this);
         this.addCard = this.addCard.bind(this);
-    }
-
-    static getDerivedStateFromProps(props, state) {
-        if (props.viewOnly !== false) {
-            const arr = state.cards.map((item) => ({ ...item }));
-            var tmp = 0;
-            while (tmp < 10) {
-                if (arr[tmp] != null) arr[tmp].editMode = false;
-                tmp++;
-            }
-            return {
-                cards: arr,
-            };
-        }
-        return null;
+        this.changeModeView = this.changeModeView.bind(this);
     }
 
     changeCheck = (id) => {
@@ -130,8 +95,18 @@ class CardList extends React.Component {
             }),
         });
     };
+    changeModeView = () => {
+        this.setState({
+            cards: this.state.cards.map((card) => {
+                return {
+                    ...card,
+                    editMode: false,
+                };
+            }),
+        });
+    };
 
-    changeText(id, newTitle, newText) {
+    changeText = (id, newTitle, newText) => {
         this.setState({
             cards: this.state.cards.map((card) => {
                 if (card.id === id) {
@@ -146,14 +121,14 @@ class CardList extends React.Component {
                 return card;
             }),
         });
-    }
+    };
 
-    deleteCard() {
+    deleteCard = () => {
         this.setState((prevState) => ({
             cards: prevState.cards.filter((card) => card.checked !== true),
         }));
-    }
-    addCard() {
+    };
+    addCard = () => {
         this.setState({
             cards: [
                 ...this.state.cards,
@@ -166,45 +141,25 @@ class CardList extends React.Component {
                 },
             ],
         });
-    }
+    };
 
     render() {
         return (
-            <>
-                <div className="divButton">
-                    <label className="labelDel" onClick={this.addCard}>
-                        <AiOutlinePlus
-                            size="50px"
-                            color="white"
-                            style={{ margin: 'auto 0' }}
-                        />
-                        <h2>ДОБАВИТЬ</h2>
-                    </label>
-                    <label className="labelDel" onClick={this.deleteCard}>
-                        <AiOutlineDelete
-                            size="50px"
-                            color="white"
-                            style={{ margin: 'auto 0' }}
-                        />
-                        <h2>УДАЛИТЬ</h2>
-                    </label>
-                </div>
-                <div className="divCards">
-                    {this.state.cards.map((card) => (
-                        <Card
-                            key={card.id}
-                            card={card}
-                            viewOnly={this.props.viewOnly}
-                            changeCheck={() => this.changeCheck(card.id)}
-                            changeMode={() => this.changeMode(card.id)}
-                            changeText={this.changeText}
-                            setNewText={this.setNewText}
-                        />
-                    ))}
-                </div>
-            </>
+            <Provider
+                value={{
+                    cards: this.state.cards,
+                    cardsCount: this.state.cards.length,
+                    changeCheck: this.changeCheck,
+                    changeMode: this.changeMode,
+                    changeText: this.changeText,
+                    deleteCard: this.deleteCard,
+                    addCard: this.addCard,
+                    changeModeView: this.changeModeView,
+                }}>
+                {this.props.children}
+            </Provider>
         );
     }
 }
 
-export default CardList;
+export { CardContext, Consumer as CardsContextConsumer };

@@ -1,17 +1,4 @@
-.labelDel {
-    display: flex;
-    width: 170px;
-    margin-left: 10px;
-    cursor: pointer;
-}
-h2 {
-    color: white;
-    font-weight: bolder;
-}
 .divCards {
     display: flex;
     flex-wrap: wrap;
-}
-.divButton {
-    display: flex;
 }

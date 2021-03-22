@@ -3,6 +3,7 @@ import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 import './Card.css';
 import withLoadingDelay from '../../../../hoc/withLoadingDelay';
+import PropTypes from 'prop-types';
 
 function Card({
     card,
@@ -53,5 +54,14 @@ function Card({
         </div>
     );
 }
+
+Card.propTypes = {
+    card: PropTypes.object,
+    viewOnly: PropTypes.bool,
+    changeCheck: PropTypes.func,
+    changeMode: PropTypes.func,
+    changeText: PropTypes.func,
+    setNewText: PropTypes.func,
+};
 
 export default withLoadingDelay(Card);

@@ -1,8 +1,8 @@
 import React from 'react';
 import { CardsContextConsumer } from '../../context/CardContext';
+import { Badge } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './Header.css';
-import Badge from 'react-bootstrap/Badge';
-import Button from 'react-bootstrap/Button';
 
 class Header extends React.Component {
     render() {

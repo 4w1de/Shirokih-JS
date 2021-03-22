@@ -1,8 +1,6 @@
 import React from 'react';
-import Card from './card/Card';
-
+import Card from './card';
 import './CardList.css';
-//import { v4 as uuidv4 } from 'uuid';
 import { CardsContextConsumer } from './../../../context/CardContext';
 
 class CardList extends React.Component {

@@ -1,8 +1,7 @@
 import React from 'react';
-import CardList from './cards/CardList';
-import BodyHeader from './body-header/BodyHeader';
+import CardList from './cards';
+import BodyHeader from './body-header';
 import './Body.css';
-//import { CardContext } from '../../context/CardContext';
 
 class Body extends React.Component {
     constructor() {
@@ -26,7 +25,6 @@ class Body extends React.Component {
 
     render() {
         return (
-            //<CardContext viewOnly={this.state.viewOnly}>
             <div className="divBody">
                 <BodyHeader
                     changeView={this.changeView}
@@ -35,7 +33,6 @@ class Body extends React.Component {
                 />
                 <CardList viewOnly={this.state.viewOnly} />
             </div>
-            //</CardContext>
         );
     }
 }

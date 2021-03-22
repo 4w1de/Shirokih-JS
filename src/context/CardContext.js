@@ -68,22 +68,6 @@ class CardContext extends React.Component {
         this.changeModeView = this.changeModeView.bind(this);
     }
 
-    /*static getDerivedStateFromProps(props, state) {
-        if (props.viewOnly !== false) {
-            console.log(state.cards.length);
-            const arr = state.cards.map((item) => ({ ...item }));
-            var tmp = 0;
-            while (tmp < state.cards.length) {
-                if (arr[tmp] != null) arr[tmp].editMode = false;
-                tmp++;
-            }
-            return {
-                cards: arr,
-            };
-        }
-        return null;
-    }*/
-
     changeCheck = (id) => {
         this.setState({
             cards: this.state.cards.map((card) => {

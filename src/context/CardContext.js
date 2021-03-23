@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -8,57 +9,7 @@ class CardContext extends React.Component {
         super();
 
         this.state = {
-            cards: [
-                {
-                    id: 0,
-                    title: 'Карточка 0',
-                    text: 'Текст карточки 0',
-                    checked: false,
-                    editMode: false,
-                },
-                {
-                    id: 1,
-                    title: 'Карточка 1',
-                    text: 'Текст карточки 1',
-                    checked: false,
-                    editMode: false,
-                },
-                {
-                    id: 2,
-                    title: 'Карточка 2',
-                    text: 'Текст карточки 2',
-                    checked: false,
-                    editMode: false,
-                },
-                {
-                    id: 3,
-                    title: 'Карточка 3',
-                    text: 'Текст карточки 3',
-                    checked: false,
-                    editMode: false,
-                },
-                {
-                    id: 4,
-                    title: 'Карточка 4',
-                    text: 'Текст карточки 4',
-                    checked: false,
-                    editMode: false,
-                },
-                {
-                    id: 5,
-                    title: 'Карточка 5',
-                    text: 'Текст карточки 5',
-                    checked: false,
-                    editMode: false,
-                },
-                {
-                    id: 6,
-                    title: 'Карточка 6',
-                    text: 'Текст карточки 6',
-                    checked: false,
-                    editMode: false,
-                },
-            ],
+            cards: [],
         };
         this.changeCheck = this.changeCheck.bind(this);
         this.changeMode = this.changeMode.bind(this);
@@ -66,6 +17,26 @@ class CardContext extends React.Component {
         this.deleteCard = this.deleteCard.bind(this);
         this.addCard = this.addCard.bind(this);
         this.changeModeView = this.changeModeView.bind(this);
+    }
+
+    componentDidMount() {
+        axios
+            .get(
+                'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json',
+            )
+            .then((res) => {
+                this.setState({
+                    cards: res.data.slice(0, 15).map((data) => {
+                        return {
+                            id: data.Number,
+                            title: data.Name,
+                            text: data.About,
+                            checked: false,
+                            editMode: false,
+                        };
+                    }),
+                });
+            });
     }
 
     changeCheck = (id) => {
@@ -81,6 +52,7 @@ class CardContext extends React.Component {
             }),
         });
     };
+
     changeMode = (id) => {
         this.setState({
             cards: this.state.cards.map((card) => {
@@ -95,6 +67,7 @@ class CardContext extends React.Component {
             }),
         });
     };
+
     changeModeView = () => {
         this.setState({
             cards: this.state.cards.map((card) => {

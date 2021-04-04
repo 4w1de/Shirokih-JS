@@ -1,0 +1,14 @@
+.divMenu {
+    float: right;
+    display: flex;
+}
+.styleIcon {
+    margin-right: 10px;
+    font-size: 15px;
+    font-weight: normal;
+    text-shadow: none;
+}
+.styleIcon:hover {
+    color: white;
+    border-bottom: 1px solid white;
+}

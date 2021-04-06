@@ -4,19 +4,22 @@ import './Menu.css';
 
 function Menu() {
     return (
-        <div className="divMenu">
-            <Link style={{ textDecoration: 'none' }} to="/">
-                <div className="styleIcon">
-                    <AiOutlineHome size="25px" />
-                    home
-                </div>
-            </Link>
-            <Link style={{ textDecoration: 'none' }} to="/asd">
-                <div className="styleIcon">
-                    <AiOutlineLogin size="25px" />
-                    sign in
-                </div>
-            </Link>
+        <div className="div-cont-menu">
+            <div className="div-menu">
+                <Link style={{ textDecoration: 'none' }} to="/">
+                    <div className="style-icon">
+                        <AiOutlineHome size="25px" />
+                        home
+                    </div>
+                </Link>
+
+                <Link style={{ textDecoration: 'none' }} to="/signin">
+                    <div className="style-icon">
+                        <AiOutlineLogin size="25px" />
+                        sign in
+                    </div>
+                </Link>
+            </div>
         </div>
     );
 }

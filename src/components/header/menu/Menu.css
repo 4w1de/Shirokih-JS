@@ -1,14 +1,25 @@
-.divMenu {
-    float: right;
+.div-cont-menu {
+    width: 100%;
     display: flex;
+    background-color: rgb(87, 87, 87);
 }
-.styleIcon {
+.div-menu {
+    display: flex;
+    margin-left: auto;
+}
+.style-icon {
     margin-right: 10px;
     font-size: 15px;
     font-weight: normal;
     text-shadow: none;
-}
-.styleIcon:hover {
+    background-color: rgba(0, 0, 0, 0.39);
+    padding: 0 10px 0 10px;
+    border-left: 2px ridge white;
+    border-right: 2px ridge white;
     color: white;
-    border-bottom: 1px solid white;
+}
+.style-icon:hover {
+    color: #007bff;
+    border-left: 2px ridge #007bff;
+    border-right: 2px ridge #007bff;
 }

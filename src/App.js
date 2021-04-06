@@ -12,7 +12,7 @@ class App extends React.Component {
                     {(context) => (
                         <>
                             <Header />
-                            <Routes changeModeView={context.changeModeView} />
+                            <Routes cchangeModeView={context.changeModeView} />
                         </>
                     )}
                 </CardsContextConsumer>

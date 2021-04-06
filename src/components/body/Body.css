@@ -1,5 +1,7 @@
 .divBody {
     position: absolute;
     width: 100%;
+    min-height: 900px;
     background-color: rgb(87, 87, 87);
+    background-size: auto;
 }

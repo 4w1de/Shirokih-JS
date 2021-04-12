@@ -20,7 +20,7 @@ class Body extends React.Component {
                 ? 'ТОЛЬКО ПРОСМОТР'
                 : 'ПРОСМОТР И РЕДАКТИРОВАНИЕ',
         });
-        this.props.cchangeModeView();
+        this.props.changeModeView();
     }
 
     render() {

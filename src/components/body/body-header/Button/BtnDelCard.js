@@ -3,7 +3,7 @@ import { AiOutlineDelete } from 'react-icons/ai';
 
 function BtnDelCard(props) {
     return (
-        <label className="labelBtn" onClick={props.deleteCard}>
+        <label className="label-btn" onClick={props.deleteCard}>
             <AiOutlineDelete
                 size="50px"
                 color="white"

@@ -8,7 +8,7 @@ class CardList extends React.Component {
         return (
             <CardsContextConsumer>
                 {(context) => (
-                    <div className="divCards">
+                    <div className="div-cards">
                         {context.cards.map((card) => (
                             <Card
                                 key={card.id}

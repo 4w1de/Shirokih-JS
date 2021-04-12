@@ -11,7 +11,7 @@ class BodyHeader extends React.Component {
             <CardsContextConsumer>
                 {(context) => (
                     <>
-                        <div className="divButton">
+                        <div className="div-button">
                             <BtnAddCard addCard={context.addCard} />
                             <BtnDelCard deleteCard={context.deleteCard} />
                         </div>

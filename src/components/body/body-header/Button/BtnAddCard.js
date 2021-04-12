@@ -3,7 +3,7 @@ import { AiOutlinePlus } from 'react-icons/ai';
 
 function BtnAddCard(props) {
     return (
-        <label className="labelBtn" onClick={props.addCard}>
+        <label className="label-btn" onClick={props.addCard}>
             <AiOutlinePlus
                 size="50px"
                 color="white"

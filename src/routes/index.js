@@ -2,13 +2,20 @@ import Body from '../components/body';
 import PageErr from '../components/page-err';
 import SignIn from '../components/body/signin';
 import { Route, Switch } from 'react-router-dom';
+import { CardsContextConsumer } from '../context/CardContext';
 
 const Routes = (props) => (
     <Switch>
         <Route
             exact
             path="/"
-            render={() => <Body changeModeView={props.changeModeView} />}
+            render={() => (
+                <CardsContextConsumer>
+                    {(context) => (
+                        <Body changeModeView={context.changeModeView} />
+                    )}
+                </CardsContextConsumer>
+            )}
         />
         <Route exact path="/signin" component={SignIn} />
         <Route component={PageErr} />

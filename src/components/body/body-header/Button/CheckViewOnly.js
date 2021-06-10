@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Vo from '../../../../img/vo.png';
-import Nvo from '../../../../img/nvo.png';
-
+import { BsEye, BsPencil } from 'react-icons/bs';
 const Label = styled.label`
     display: flex;
     margin: 20px 5px 10px;
@@ -16,7 +14,6 @@ const Checkmark = styled.div`
     width: 40px;
     height: 40px;
     border: 2px solid orangered;
-    background: url(${(props) => (props.imgCheck ? Vo : Nvo)});
     background-size: cover;
     background-color: rgba(201, 25, 25, 0.39);
     border: 2px solid black;
@@ -35,7 +32,13 @@ class CheckViewOnly extends React.Component {
             <div>
                 <Label>
                     <HiddenCheckbox onChange={this.props.changeView} />
-                    <Checkmark imgCheck={this.props.viewOnly} />
+                    <Checkmark>
+                        {this.props.viewOnly ? (
+                            <BsEye size="35" color="white" />
+                        ) : (
+                            <BsPencil size="35" color="white" />
+                        )}
+                    </Checkmark>
                     <TextViewObly>{this.props.textCheck}</TextViewObly>
                 </Label>
             </div>

@@ -47,6 +47,7 @@ function CardHeader({
                         type="checkbox"
                         className="checkbox"
                         onChange={changeCheck}
+                        checked={props.checked}
                     />
                 </>
             ) : (

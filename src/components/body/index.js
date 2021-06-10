@@ -13,7 +13,7 @@ class Body extends React.Component {
         this.changeView = this.changeView.bind(this);
     }
 
-    changeView() {
+    changeView(cmv) {
         this.setState({
             viewOnly: !this.state.viewOnly,
             textCheck: !this.state.viewOnly

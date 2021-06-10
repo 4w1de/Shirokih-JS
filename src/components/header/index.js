@@ -3,6 +3,7 @@ import { CardsContextConsumer } from '../../context/CardContext';
 import { Badge } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import './Header.css';
+import Menu from './menu';
 
 class Header extends React.Component {
     render() {
@@ -10,6 +11,7 @@ class Header extends React.Component {
             <CardsContextConsumer>
                 {(context) => (
                     <header className="styleHeader">
+                        <Menu />
                         текст header
                         <div>
                             <Button variant="primary">

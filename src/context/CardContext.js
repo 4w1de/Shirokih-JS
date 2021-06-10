@@ -20,23 +20,38 @@ class CardContext extends React.Component {
     }
 
     componentDidMount() {
-        axios
-            .get(
-                'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json',
-            )
-            .then((res) => {
-                this.setState({
-                    cards: res.data.slice(0, 15).map((data) => {
-                        return {
-                            id: data.Number,
-                            title: data.Name,
-                            text: data.About,
-                            checked: false,
-                            editMode: false,
-                        };
-                    }),
+        if (
+            localStorage.getItem('cards') === null ||
+            localStorage.getItem('cards') === '[]'
+        ) {
+            axios
+                .get(
+                    'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json',
+                )
+                .then((res) => {
+                    this.setState({
+                        cards: res.data.slice(0, 15).map((data) => {
+                            return {
+                                id: data.Number,
+                                title: data.Name,
+                                text: data.About,
+                                checked: false,
+                                editMode: false,
+                            };
+                        }),
+                    });
                 });
+        } else {
+            this.setState({
+                cards: JSON.parse(localStorage.getItem('cards')),
             });
+        }
+    }
+
+    componentDidUpdate(prevSate) {
+        if (prevSate.cards !== this.state.cards) {
+            localStorage.setItem('cards', JSON.stringify(this.state.cards));
+        }
     }
 
     changeCheck = (id) => {

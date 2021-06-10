@@ -43,6 +43,7 @@ function Card({
                 changeMode={tmpChangeMode}
                 changeText={changeText}
                 tmpChange={tmpChange}
+                checked={card.checked}
             />
             <hr />
             <CardBody

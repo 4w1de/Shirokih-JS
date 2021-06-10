@@ -1,7 +1,7 @@
-.divButton {
+.div-button {
     display: flex;
 }
-.labelBtn {
+.label-btn {
     display: flex;
     width: 170px;
     margin-left: 10px;

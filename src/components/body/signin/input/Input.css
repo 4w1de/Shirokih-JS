@@ -1,0 +1,17 @@
+h3 {
+    font-size: 1.17em;
+    margin: 20px 0 0 10px;
+}
+.inp-sign {
+    width: 380px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: rgba(138, 138, 138, 0.493);
+    font-size: 1.17em;
+    color: white;
+    font-weight: bolder;
+}
+.invalid {
+    border: 3px solid rgb(83, 10, 10);
+    color: rgb(82, 16, 16);
+}

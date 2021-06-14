@@ -18,18 +18,6 @@ h1 {
     font-weight: bolder;
     margin-left: 10px;
 }
-h3 {
-    font-size: 1.17em;
-    margin: 20px 0 0 10px;
-}
-.inp-sign {
-    width: 380px;
-    height: 40px;
-    margin-left: 10px;
-    background-color: rgba(138, 138, 138, 0.493);
-    font-size: 1.17em;
-    color: white;
-}
 .div-login {
     background-color: rgba(0, 0, 0, 0.39);
     width: 120px;
@@ -44,4 +32,15 @@ h3 {
     color: #007bff;
     border: 2px ridge #007bff;
     cursor: pointer;
+}
+.div-login-disabled {
+    background-color: rgba(65, 65, 65, 0.39);
+    width: 120px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+    border: 2px ridge rgb(133, 133, 133);
+    margin: 235px auto;
+    color: rgb(114, 114, 114);
 }

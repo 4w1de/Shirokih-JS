@@ -2,6 +2,8 @@ import React from 'react';
 import CardList from './cards';
 import BodyHeader from './body-header';
 import './Body.css';
+import { connect } from 'react-redux';
+import { onChangeModeView } from '../../store/actions';
 
 class Body extends React.Component {
     constructor() {
@@ -20,7 +22,7 @@ class Body extends React.Component {
                 ? 'ТОЛЬКО ПРОСМОТР'
                 : 'ПРОСМОТР И РЕДАКТИРОВАНИЕ',
         });
-        this.props.changeModeView();
+        this.props.onChangeModeView(true);
     }
 
     render() {
@@ -37,4 +39,8 @@ class Body extends React.Component {
     }
 }
 
-export default Body;
+const mapDispatchToProps = {
+    onChangeModeView,
+};
+
+export default connect(null, mapDispatchToProps)(Body);

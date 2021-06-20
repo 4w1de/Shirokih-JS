@@ -27,7 +27,7 @@ function CardHeader({
     }
 
     return (
-        <div className="cardHeader">
+        <div className="cardHeader" onDoubleClick={props.onDoubleClick}>
             {!editMode ? (
                 <>
                     <h3>{title}</h3>

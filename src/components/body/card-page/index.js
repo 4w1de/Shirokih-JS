@@ -10,12 +10,6 @@ import {
 } from '../../../store/actions';
 
 class CardPage extends React.Component {
-    componentDidUpdate(prevProps) {
-        if (prevProps.crds !== this.props.crds) {
-            localStorage.setItem('cards', JSON.stringify(this.props.crds));
-        }
-    }
-
     render() {
         const cardIndex = this.props.crds.findIndex((card) => {
             return card.id === this.props.match.params.id;

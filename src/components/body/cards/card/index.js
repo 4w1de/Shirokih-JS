@@ -11,7 +11,6 @@ function Card({
     changeCheck,
     changeMode,
     changeText,
-    setNewText,
     ...props
 }) {
     var [state, setState] = useState({
@@ -44,6 +43,7 @@ function Card({
                 changeText={changeText}
                 tmpChange={tmpChange}
                 checked={card.checked}
+                onDoubleClick={props.onDoubleClick}
             />
             <hr />
             <CardBody
@@ -51,6 +51,7 @@ function Card({
                 state={state}
                 setState={setState}
                 editMode={card.editMode}
+                onDoubleClick={props.onDoubleClick}
             />
         </div>
     );
@@ -62,7 +63,6 @@ Card.propTypes = {
     changeCheck: PropTypes.func,
     changeMode: PropTypes.func,
     changeText: PropTypes.func,
-    setNewText: PropTypes.func,
 };
 
 export default withLoadingDelay(Card);

@@ -1,25 +1,31 @@
 .div-cont-menu {
     width: 100%;
     display: flex;
-    background-color: rgb(87, 87, 87);
+    background-color: #3f72af;
+    padding: 0 190px 0 190px;
 }
 .div-menu {
     display: flex;
     margin-left: auto;
 }
 .style-icon {
-    margin-right: 10px;
+    margin: 10px;
+    height: 38px;
     font-size: 15px;
     font-weight: normal;
     text-shadow: none;
-    background-color: rgba(0, 0, 0, 0.39);
-    padding: 0 10px 0 10px;
-    border-left: 2px ridge white;
-    border-right: 2px ridge white;
-    color: white;
+    background-color: #f8f9fa;
+    color: #212529;
+    border-radius: 0.25rem;
+    padding: 0.25em 0.4em;
+    line-height: 27px;
+    border: 2px solid #3f72af;
 }
 .style-icon:hover {
-    color: #007bff;
-    border-left: 2px ridge #007bff;
-    border-right: 2px ridge #007bff;
+    background-color: #112d4e;
+    border: 2px solid #dbe2ef;
+    color: #dbe2ef;
+}
+h6 {
+    padding: 10px;
 }

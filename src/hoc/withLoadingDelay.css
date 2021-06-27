@@ -1,5 +1,5 @@
 .divSpinner {
-    background-color: rgb(51, 51, 51);
+    background-color: #3f72af;
     position: relative;
     width: 400px;
     height: 500px;
@@ -7,55 +7,71 @@
     margin-left: auto;
     margin-right: auto;
 }
-.facebook {
-    width: 70px;
-    margin: 200px auto;
-}
-.facebook div {
-    height: 50px;
-    width: 20px;
-    display: inline-block;
-    background-color: #db5656;
-    border: 1px solid #992121;
 
-    -webkit-animation: facebook_loader 1.3s linear infinite;
-    animation: facebook_loader 1.3s linear infinite;
-
-    -webkit-transform: scale(0.91);
-    transform: scale(0.91);
+.loader,
+.loader:before,
+.loader:after {
+    border-radius: 50%;
 }
-.facebook div:nth-child(1) {
-    -webkit-animation-delay: 0.39s;
-    animation-delay: 0.39s;
+.loader {
+    color: #dbe2ef;
+    font-size: 11px;
+    text-indent: -99999em;
+    margin: 55px auto;
+    position: relative;
+    width: 10em;
+    height: 10em;
+    box-shadow: inset 0 0 0 1em;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
 }
-.facebook div:nth-child(2) {
-    -webkit-animation-delay: 0.52s;
-    animation-delay: 0.52s;
+.loader:before,
+.loader:after {
+    position: absolute;
+    content: '';
 }
-.facebook div:nth-child(3) {
-    -webkit-animation-delay: 0.65s;
-    animation-delay: 0.65s;
+.loader:before {
+    width: 5.2em;
+    height: 10.2em;
+    background: #3f72af;
+    border-radius: 10.2em 0 0 10.2em;
+    top: -0.1em;
+    left: -0.1em;
+    -webkit-transform-origin: 5.1em 5.1em;
+    transform-origin: 5.1em 5.1em;
+    -webkit-animation: load2 2s infinite ease 1.5s;
+    animation: load2 2s infinite ease 1.5s;
 }
-@-webkit-keyframes facebook_loader {
+.loader:after {
+    width: 5.2em;
+    height: 10.2em;
+    background: #3f72af;
+    border-radius: 0 10.2em 10.2em 0;
+    top: -0.1em;
+    left: 4.9em;
+    -webkit-transform-origin: 0.1em 5.1em;
+    transform-origin: 0.1em 5.1em;
+    -webkit-animation: load2 2s infinite ease;
+    animation: load2 2s infinite ease;
+}
+@-webkit-keyframes load2 {
     0% {
-        -webkit-transform: scale(1.2);
-        opacity: 1;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-
     100% {
-        -webkit-transform: scale(0.7);
-        opacity: 0.1;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
-
-@keyframes facebook_loader {
+@keyframes load2 {
     0% {
-        transform: scale(1.2);
-        opacity: 1;
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
     }
-
     100% {
-        transform: scale(0.7);
-        opacity: 0.1;
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }

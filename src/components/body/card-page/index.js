@@ -17,7 +17,7 @@ class CardPage extends React.Component {
         const card = this.props.crds[cardIndex];
         return (
             <div className="divBody">
-                <div className="div-cards">
+                <div className="div-cards-page">
                     <Card
                         key={card.id}
                         card={card}

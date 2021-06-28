@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome, AiOutlineLogin } from 'react-icons/ai';
 import './Menu.css';
-import { Badge } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import { Badge, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 class Menu extends React.Component {

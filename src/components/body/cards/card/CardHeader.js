@@ -30,7 +30,7 @@ function CardHeader({
         <div className="cardHeader" onDoubleClick={props.onDoubleClick}>
             {!editMode ? (
                 <>
-                    <h3>{title}</h3>
+                    <h2>{title}</h2>
                     {viewOnly ? (
                         <div className="divEmpty" />
                     ) : (
@@ -57,16 +57,17 @@ function CardHeader({
                         defaultValue={title}
                         onChange={setTextHeader}
                     />
-                    <AiOutlineCheck
-                        size="30px"
-                        style={{ margin: 'auto 0', marginLeft: 'auto' }}
-                        onClick={tmpChange}
-                    />
-                    <AiOutlineCloseCircle
-                        size="30px"
-                        style={{ margin: 'auto 10px' }}
-                        onClick={changeMode}
-                    />
+                    <div style={{ margin: 'auto -10px auto auto' }}>
+                        <AiOutlineCheck
+                            size="30px"
+                            style={{ marginRight: 10 }}
+                            onClick={tmpChange}
+                        />
+                        <AiOutlineCloseCircle
+                            size="30px"
+                            onClick={changeMode}
+                        />
+                    </div>
                 </>
             )}
         </div>

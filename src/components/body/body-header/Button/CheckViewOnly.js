@@ -3,45 +3,48 @@ import styled from 'styled-components';
 import { BsEye, BsPencil } from 'react-icons/bs';
 const Label = styled.label`
     display: flex;
-    margin: 20px 5px 10px;
+    margin: 20px 0 20px 200px;
     height: 50px;
+    float: left;
 `;
 const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
     display: none;
 `;
 const Checkmark = styled.div`
     position: relative;
-    width: 40px;
-    height: 40px;
-    border: 2px solid orangered;
+    width: 62px;
+    height: 62px;
     background-size: cover;
-    background-color: rgba(201, 25, 25, 0.39);
-    border: 2px solid black;
     cursor: pointer;
-    margin: auto 10px;
-`;
-const TextViewObly = styled.h2`
-    color: white;
     margin: auto 0;
+    background-color: #3f72af;
+    color: #dbe2ef;
+    border-radius: 0.25rem;
+    padding: 0.25em 0.4em;
+`;
+const TextViewObly = styled.h3`
+    color: white;
+    width: 100%;
+    margin: 0 0 0 10px;
+    line-height: 62px;
     font-weight: bolder;
+    color: #112d4e;
 `;
 
 class CheckViewOnly extends React.Component {
     render() {
         return (
-            <div>
-                <Label>
-                    <HiddenCheckbox onChange={this.props.changeView} />
-                    <Checkmark>
-                        {this.props.viewOnly ? (
-                            <BsEye size="35" color="white" />
-                        ) : (
-                            <BsPencil size="35" color="white" />
-                        )}
-                    </Checkmark>
-                    <TextViewObly>{this.props.textCheck}</TextViewObly>
-                </Label>
-            </div>
+            <Label>
+                <HiddenCheckbox onChange={this.props.changeView} />
+                <Checkmark>
+                    {this.props.viewOnly ? (
+                        <BsEye size="49" color="white" />
+                    ) : (
+                        <BsPencil size="49" color="white" />
+                    )}
+                </Checkmark>
+                <TextViewObly>{this.props.textCheck}</TextViewObly>
+            </Label>
         );
     }
 }

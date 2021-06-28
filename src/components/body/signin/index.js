@@ -125,8 +125,8 @@ class SignIn extends React.Component {
                                 ? 'div-login'
                                 : 'div-login-disabled'
                         }>
-                        <AiOutlineLogin size="26" style={{ marginTop: -7 }} />
-                        Войти
+                        <AiOutlineLogin size="26" />
+                        <b>Войти</b>
                     </div>
                 </div>
             </div>

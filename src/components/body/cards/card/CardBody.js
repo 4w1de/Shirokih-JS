@@ -10,7 +10,7 @@ function CardBody({ text, editMode, ...props }) {
     }
 
     return (
-        <div className="cardHeader" onDoubleClick={props.onDoubleClick}>
+        <div className="cardBody" onDoubleClick={props.onDoubleClick}>
             {!editMode ? (
                 <p className="bodyText">{text}</p>
             ) : (

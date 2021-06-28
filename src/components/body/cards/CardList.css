@@ -1,4 +1,10 @@
 .div-cards {
     display: flex;
     flex-wrap: wrap;
+    padding: 0 200px 0 200px;
+}
+.div-cards-page {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 200px 0 200px;
 }

@@ -19,11 +19,7 @@ function withLoadingDelay(WrappedComponent) {
         render() {
             return this.state.showSpinner ? (
                 <div className="divSpinner">
-                    <div className="facebook">
-                        <div />
-                        <div />
-                        <div />
-                    </div>
+                    <div className="loader">Loading...</div>
                 </div>
             ) : (
                 <WrappedComponent {...this.props} />

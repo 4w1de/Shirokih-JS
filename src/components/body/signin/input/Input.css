@@ -5,13 +5,16 @@ h3 {
 .inp-sign {
     width: 380px;
     height: 40px;
-    margin-left: 10px;
+    margin: 10px 0 20px 6px;
     background-color: rgba(138, 138, 138, 0.493);
     font-size: 1.17em;
     color: white;
     font-weight: bolder;
+    border: 4px solid #dbe2ef;
 }
 .invalid {
-    border: 3px solid rgb(83, 10, 10);
+    border: 4px solid rgb(211, 28, 28);
+    margin: 10px 0 20px 10px;
+    width: 372px;
     color: rgb(82, 16, 16);
 }

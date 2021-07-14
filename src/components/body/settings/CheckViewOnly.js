@@ -1,6 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import { connect } from 'react-redux';
 import { BsEye, BsPencil } from 'react-icons/bs';
+import { onChangeModeView } from '../../../store/cards/actions';
+
+import styled from 'styled-components';
+
 const Label = styled.label`
     display: flex;
     margin: 20px 0 20px 200px;
@@ -32,10 +37,19 @@ const TextViewObly = styled.h3`
 `;
 
 class CheckViewOnly extends React.Component {
+    constructor() {
+        super();
+
+        this.changeView = this.changeView.bind(this);
+    }
+
+    changeView() {
+        this.props.onChangeModeView();
+    }
     render() {
         return (
             <Label>
-                <HiddenCheckbox onChange={this.props.changeView} />
+                <HiddenCheckbox onChange={this.changeView} />
                 <Checkmark>
                     {this.props.viewOnly ? (
                         <BsEye size="49" color="white" />
@@ -43,10 +57,21 @@ class CheckViewOnly extends React.Component {
                         <BsPencil size="49" color="white" />
                     )}
                 </Checkmark>
-                <TextViewObly>{this.props.textCheck}</TextViewObly>
+                <TextViewObly>
+                    {this.props.viewOnly
+                        ? 'ТОЛЬКО ПРОСМОТР'
+                        : 'ПРОСМОТР И РЕДАКТИРОВАНИЕ'}
+                </TextViewObly>
             </Label>
         );
     }
 }
 
-export default CheckViewOnly;
+const mapStateToProps = (state) => {
+    return {
+        viewOnly: state.cards.viewOnly,
+    };
+};
+const mapDispatchToProps = { onChangeModeView };
+
+export default connect(mapStateToProps, mapDispatchToProps)(CheckViewOnly);

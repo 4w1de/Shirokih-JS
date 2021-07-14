@@ -1,41 +1,67 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { AiOutlineHome, AiOutlineLogin } from 'react-icons/ai';
-import './Menu.css';
-import { Badge, Button } from 'react-bootstrap';
+import CounterCards from './CounterCards';
+import ButtonLink from './ButtonLink';
+
 import { connect } from 'react-redux';
+import { logout } from '../../../store/auth/reducer';
+
+import './Menu.css';
 
 class Menu extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.logout = this.logout.bind(this);
+    }
+
+    logout() {
+        this.props.logout();
+    }
+
     render() {
         return (
             <div className="div-cont-menu">
-                <h6>
-                    <Button variant="light">
-                        Cards{' '}
-                        <Badge variant="light">{this.props.cardsCount}</Badge>
-                    </Button>
-                </h6>
+                <CounterCards />
+                {this.props.isUserLoggedIn ? (
+                    <h6>Приветствую, {this.props.email}</h6>
+                ) : null}
                 <div className="div-menu">
-                    <Link style={{ textDecoration: 'none' }} to="/">
-                        <div className="style-icon">
-                            <AiOutlineHome size="25px" />
-                            home
+                    <ButtonLink
+                        title="home"
+                        nameIcon="AiOutlineHome"
+                        pageAddress=""
+                    />
+                    {this.props.isUserLoggedIn ? (
+                        <div onClick={this.logout}>
+                            <ButtonLink
+                                title="logout"
+                                nameIcon="AiOutlineLogout"
+                                pageAddress="signin"
+                                onClick={this.logout}
+                            />
                         </div>
-                    </Link>
-
-                    <Link style={{ textDecoration: 'none' }} to="/signin">
-                        <div className="style-icon">
-                            <AiOutlineLogin size="25px" />
-                            sign in
-                        </div>
-                    </Link>
+                    ) : (
+                        <ButtonLink
+                            title="login"
+                            nameIcon="AiOutlineLogin"
+                            pageAddress="signin"
+                        />
+                    )}
                 </div>
             </div>
         );
     }
 }
+
 const mapStateToProps = (state) => {
-    return { cardsCount: state.cards.length };
+    return {
+        email: state.auth.email,
+        password: state.auth.password,
+        role: state.auth.role,
+        isUserLoggedIn: state.auth.isUserLoggedIn,
+    };
 };
 
-export default connect(mapStateToProps)(Menu);
+const mapDispatchToProps = { logout };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

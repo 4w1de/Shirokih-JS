@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { AiOutlineDelete } from 'react-icons/ai';
 
 function BtnDelCard(props) {

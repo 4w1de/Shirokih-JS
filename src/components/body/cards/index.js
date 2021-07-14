@@ -1,15 +1,17 @@
 import React from 'react';
 import Card from './card';
+
 import axios from 'axios';
-import './CardList.css';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import {
     onEditCard,
     onChangeMode,
     onChangeCheck,
     onInitCards,
-} from '../../../store/actions';
-import { withRouter } from 'react-router';
+} from '../../../store/cards/actions';
+
+import './CardList.css';
 
 class CardList extends React.Component {
     componentDidMount() {
@@ -39,14 +41,14 @@ class CardList extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.crds !== this.props.crds) {
-            localStorage.setItem('cards', JSON.stringify(this.props.crds));
+        if (prevProps.cards !== this.props.cards) {
+            localStorage.setItem('cards', JSON.stringify(this.props.cards));
         }
     }
 
     doubleClickCard = (id, history) => {
-        let cardIndex = this.props.crds.findIndex((card) => card.id === id);
-        let card = this.props.crds[cardIndex];
+        let cardIndex = this.props.cards.findIndex((card) => card.id === id);
+        let card = this.props.cards[cardIndex];
         if (card.editMode === false) history.push({ pathname: '/card' + id });
     };
 
@@ -54,12 +56,11 @@ class CardList extends React.Component {
         const { history } = this.props;
         return (
             <div className="div-cards">
-                {this.props.crds.map((card) => {
+                {this.props.cards.map((card) => {
                     return (
                         <Card
                             key={card.id}
                             card={card}
-                            viewOnly={this.props.viewOnly}
                             changeCheck={() =>
                                 this.props.onChangeCheck(card.id)
                             }
@@ -68,6 +69,7 @@ class CardList extends React.Component {
                             onDoubleClick={() =>
                                 this.doubleClickCard(card.id, history)
                             }
+                            viewOnly={this.props.viewOnly}
                         />
                     );
                 })}
@@ -77,7 +79,7 @@ class CardList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { crds: state.cards };
+    return { cards: state.cards.cards, viewOnly: state.cards.viewOnly };
 };
 
 const mapDispatchToProps = {

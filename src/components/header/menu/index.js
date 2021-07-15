@@ -4,6 +4,7 @@ import ButtonLink from './ButtonLink';
 
 import { connect } from 'react-redux';
 import { logout } from '../../../store/auth/reducer';
+import { onResetViewOnly } from '../../../store/cards/actions';
 
 import './Menu.css';
 
@@ -16,6 +17,7 @@ class Menu extends React.Component {
 
     logout() {
         this.props.logout();
+        this.props.onResetViewOnly();
     }
 
     render() {
@@ -62,6 +64,6 @@ const mapStateToProps = (state) => {
     };
 };
 
-const mapDispatchToProps = { logout };
+const mapDispatchToProps = { logout, onResetViewOnly };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Menu);

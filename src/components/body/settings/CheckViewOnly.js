@@ -8,7 +8,7 @@ import styled from 'styled-components';
 
 const Label = styled.label`
     display: flex;
-    margin: 20px 0 20px 200px;
+    margin: 20px 0 5px 10px;
     height: 50px;
     float: left;
 `;
@@ -17,8 +17,8 @@ const HiddenCheckbox = styled.input.attrs({ type: 'checkbox' })`
 `;
 const Checkmark = styled.div`
     position: relative;
-    width: 62px;
-    height: 62px;
+    width: 36px;
+    height: 36px;
     background-size: cover;
     cursor: pointer;
     margin: auto 0;
@@ -27,11 +27,11 @@ const Checkmark = styled.div`
     border-radius: 0.25rem;
     padding: 0.25em 0.4em;
 `;
-const TextViewObly = styled.h3`
+const TextViewOnly = styled.h3`
     color: white;
     width: 100%;
     margin: 0 0 0 10px;
-    line-height: 62px;
+    line-height: 47px;
     font-weight: bolder;
     color: #112d4e;
 `;
@@ -52,16 +52,16 @@ class CheckViewOnly extends React.Component {
                 <HiddenCheckbox onChange={this.changeView} />
                 <Checkmark>
                     {this.props.viewOnly ? (
-                        <BsEye size="49" color="white" />
+                        <BsEye size="25" color="white" />
                     ) : (
-                        <BsPencil size="49" color="white" />
+                        <BsPencil size="25" color="white" />
                     )}
                 </Checkmark>
-                <TextViewObly>
+                <TextViewOnly>
                     {this.props.viewOnly
                         ? 'ТОЛЬКО ПРОСМОТР'
                         : 'ПРОСМОТР И РЕДАКТИРОВАНИЕ'}
-                </TextViewObly>
+                </TextViewOnly>
             </Label>
         );
     }

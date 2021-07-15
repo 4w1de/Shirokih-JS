@@ -33,3 +33,7 @@ export const onChangeCheck = (id) => ({
     type: types.CHANGE_CHECK,
     cardID: id,
 });
+
+export const onResetViewOnly = () => ({
+    type: types.RESET_VIEW_ONLY,
+});

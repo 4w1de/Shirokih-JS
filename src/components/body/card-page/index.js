@@ -26,6 +26,7 @@ class CardPage extends React.Component {
                         changeCheck={() => this.props.onChangeCheck(card.id)}
                         changeMode={() => this.props.onChangeMode(card.id)}
                         changeText={this.props.onEditCard}
+                        viewOnly={this.props.viewOnly}
                     />
                 </div>
             </div>
@@ -34,7 +35,7 @@ class CardPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { cards: state.cards.cards };
+    return { cards: state.cards.cards, viewOnly: state.cards.viewOnly };
 };
 
 const mapDispatchToProps = {

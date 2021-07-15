@@ -83,7 +83,6 @@ class SignIn extends React.Component {
             ...updatedInputsForm[inputIdentifier],
         };
         updatedFormElem.value = event.target.value;
-        console.log(updatedFormElem.value);
         updatedFormElem.valid = this.checkValidity(
             updatedFormElem.value,
             updatedFormElem.validation,

@@ -35,21 +35,23 @@ function CardHeader({
                     {viewOnly ? (
                         <div className="divEmpty" />
                     ) : (
-                        <AiOutlineEdit
-                            size="30px"
-                            style={{
-                                margin: 'auto 10px auto 0',
-                                marginLeft: 'auto',
-                            }}
-                            onClick={changeMode}
-                        />
+                        <>
+                            <AiOutlineEdit
+                                size="30px"
+                                style={{
+                                    margin: 'auto 10px auto 0',
+                                    marginLeft: 'auto',
+                                }}
+                                onClick={changeMode}
+                            />
+                            <input
+                                type="checkbox"
+                                className="checkbox"
+                                onChange={changeCheck}
+                                checked={props.checked}
+                            />
+                        </>
                     )}
-                    <input
-                        type="checkbox"
-                        className="checkbox"
-                        onChange={changeCheck}
-                        checked={props.checked}
-                    />
                 </>
             ) : (
                 <>

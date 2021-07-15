@@ -81,6 +81,8 @@ const cardsReducer = (state = initialState, action) => {
                 ...state,
                 cards: cardsCC,
             };
+        case types.RESET_VIEW_ONLY:
+            return { ...state, viewOnly: false };
     }
     return state;
 };

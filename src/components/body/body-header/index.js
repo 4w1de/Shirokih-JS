@@ -17,20 +17,22 @@ class BodyHeader extends React.Component {
                         title="НАСТРОЙКИ"
                     />
                 ) : null}
-                <div className="div-button">
-                    <ButtonBodyHeader
-                        isBtnForCards={true}
-                        nameIcon="AiOutlinePlus"
-                        title="ДОБАВИТЬ"
-                        eventForCards={this.props.onAddCard}
-                    />
-                    <ButtonBodyHeader
-                        isBtnForCards={true}
-                        nameIcon="AiOutlineDelete"
-                        title="УДАЛИТЬ"
-                        eventForCards={this.props.onRemoveCards}
-                    />
-                </div>
+                {!this.props.viewOnly ? (
+                    <div className="div-button">
+                        <ButtonBodyHeader
+                            isBtnForCards={true}
+                            nameIcon="AiOutlinePlus"
+                            title="ДОБАВИТЬ"
+                            eventForCards={this.props.onAddCard}
+                        />
+                        <ButtonBodyHeader
+                            isBtnForCards={true}
+                            nameIcon="AiOutlineDelete"
+                            title="УДАЛИТЬ"
+                            eventForCards={this.props.onRemoveCards}
+                        />
+                    </div>
+                ) : null}
             </div>
         );
     }
@@ -39,6 +41,7 @@ class BodyHeader extends React.Component {
 const mapStateToProps = (state) => {
     return {
         role: state.auth.role,
+        viewOnly: state.cards.viewOnly,
     };
 };
 

@@ -15,10 +15,7 @@ import './CardList.css';
 
 class CardList extends React.Component {
     componentDidMount() {
-        if (
-            localStorage.getItem('cards') === null ||
-            localStorage.getItem('cards') === '[]'
-        ) {
+        if (this.props.cards.length === 0)
             axios
                 .get(
                     'https://raw.githubusercontent.com/BrunnerLivio/PokemonDataGraber/master/output.json',
@@ -35,15 +32,6 @@ class CardList extends React.Component {
                     });
                     this.props.onInitCards(cards);
                 });
-        } else {
-            this.props.onInitCards(JSON.parse(localStorage.getItem('cards')));
-        }
-    }
-
-    componentDidUpdate(prevProps) {
-        if (prevProps.cards !== this.props.cards) {
-            localStorage.setItem('cards', JSON.stringify(this.props.cards));
-        }
     }
 
     doubleClickCard = (id, history) => {

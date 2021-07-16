@@ -25,12 +25,15 @@ export const onChangeMode = (id) => ({
     cardID: id,
 });
 
-export const onChangeModeView = (viewOnly) => ({
+export const onChangeModeView = () => ({
     type: types.CHANGE_MODE_VIEW,
-    viewOnly: viewOnly,
 });
 
 export const onChangeCheck = (id) => ({
     type: types.CHANGE_CHECK,
     cardID: id,
+});
+
+export const onResetViewOnly = () => ({
+    type: types.RESET_VIEW_ONLY,
 });

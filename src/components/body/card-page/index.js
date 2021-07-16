@@ -1,20 +1,22 @@
 import React from 'react';
-import '../cards/CardList.css';
-import '../Body.css';
-import { connect } from 'react-redux';
 import Card from '../cards/card';
+
+import { connect } from 'react-redux';
 import {
     onEditCard,
     onChangeMode,
     onChangeCheck,
-} from '../../../store/actions';
+} from '../../../store/cards/actions';
+
+import '../cards/CardList.css';
+import '../Body.css';
 
 class CardPage extends React.Component {
     render() {
-        const cardIndex = this.props.crds.findIndex((card) => {
+        const cardIndex = this.props.cards.findIndex((card) => {
             return card.id === this.props.match.params.id;
         });
-        const card = this.props.crds[cardIndex];
+        const card = this.props.cards[cardIndex];
         return (
             <div className="divBody">
                 <div className="div-cards-page">
@@ -24,6 +26,7 @@ class CardPage extends React.Component {
                         changeCheck={() => this.props.onChangeCheck(card.id)}
                         changeMode={() => this.props.onChangeMode(card.id)}
                         changeText={this.props.onEditCard}
+                        viewOnly={this.props.viewOnly}
                     />
                 </div>
             </div>
@@ -32,7 +35,7 @@ class CardPage extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { crds: state.cards };
+    return { cards: state.cards.cards, viewOnly: state.cards.viewOnly };
 };
 
 const mapDispatchToProps = {

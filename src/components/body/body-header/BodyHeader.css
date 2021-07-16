@@ -14,6 +14,9 @@
     border-radius: 0.25rem;
     padding: 0.25em 0.4em;
 }
+.settings {
+    width: 200px;
+}
 .label-btn:hover {
     border: 2px solid #112d4e;
 }

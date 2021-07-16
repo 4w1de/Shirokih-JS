@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './withLoadingDelay.css';
 
 function withLoadingDelay(WrappedComponent) {

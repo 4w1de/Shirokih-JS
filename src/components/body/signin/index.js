@@ -1,45 +1,55 @@
 import React from 'react';
-import '../Body.css';
-import './SignIn.css';
-import { AiOutlineLogin } from 'react-icons/ai';
 import Input from './input/index';
 
+import { connect } from 'react-redux';
+import { AiOutlineLogin } from 'react-icons/ai';
+import { login } from '../../../store/auth/reducer';
+
+import '../Body.css';
+import './SignIn.css';
+
 class SignIn extends React.Component {
-    state = {
-        inputsForm: {
-            email: {
-                elemType: 'input',
-                elemConfig: {
-                    type: 'text',
-                    placeholder: 'Enter e-mail',
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            inputsForm: {
+                email: {
+                    elemType: 'input',
+                    elemConfig: {
+                        type: 'text',
+                        placeholder: 'Enter e-mail',
+                    },
+                    label: 'Имя пользователя',
+                    value: '',
+                    validation: {
+                        reqired: true,
+                        type: 'email',
+                    },
+                    valid: false,
+                    touched: false,
                 },
-                label: 'Имя пользователя',
-                value: '',
-                validation: {
-                    reqired: true,
-                    type: 'email',
+                password: {
+                    elemType: 'input',
+                    elemConfig: {
+                        type: 'password',
+                        placeholder: 'Enter password',
+                    },
+                    label: 'Пароль пользователя',
+                    value: '',
+                    validation: {
+                        reqired: true,
+                        type: 'password',
+                    },
+                    valid: false,
+                    touched: false,
                 },
-                valid: false,
-                touched: false,
             },
-            password: {
-                elemType: 'input',
-                elemConfig: {
-                    type: 'password',
-                    placeholder: 'Enter password',
-                },
-                label: 'Пароль пользователя',
-                value: '',
-                validation: {
-                    reqired: true,
-                    type: 'password',
-                },
-                valid: false,
-                touched: false,
-            },
-        },
-        formIsValid: false,
-    };
+            formIsValid: false,
+        };
+
+        this.authorization = this.authorization.bind(this);
+    }
 
     checkValidity(value, rules) {
         let isValid = true;
@@ -91,6 +101,18 @@ class SignIn extends React.Component {
         });
     };
 
+    authorization(event, history) {
+        if (this.state.formIsValid) {
+            const data = {
+                email: this.state.inputsForm.email.value,
+                password: this.state.inputsForm.password.value,
+            };
+            event.preventDefault();
+            this.props.login(data);
+            history.push({ pathname: '/' });
+        }
+    }
+
     render() {
         const formElemsArr = [];
         for (let inpType in this.state.inputsForm) {
@@ -99,6 +121,7 @@ class SignIn extends React.Component {
                 config: this.state.inputsForm[inpType],
             });
         }
+        const { history } = this.props;
 
         return (
             <div className="divBody">
@@ -124,7 +147,8 @@ class SignIn extends React.Component {
                             this.state.formIsValid
                                 ? 'div-login'
                                 : 'div-login-disabled'
-                        }>
+                        }
+                        onClick={(event) => this.authorization(event, history)}>
                         <AiOutlineLogin size="26" />
                         <b>Войти</b>
                     </div>
@@ -134,4 +158,6 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn;
+const mapDispatchToProps = { login };
+
+export default connect(null, mapDispatchToProps)(SignIn);

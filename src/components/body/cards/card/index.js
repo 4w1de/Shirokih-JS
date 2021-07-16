@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
-import './Card.css';
-import withLoadingDelay from '../../../../hoc/withLoadingDelay';
-import PropTypes from 'prop-types';
 
-function Card({
-    card,
-    viewOnly,
-    changeCheck,
-    changeMode,
-    changeText,
-    ...props
-}) {
+import PropTypes from 'prop-types';
+import withLoadingDelay from '../../../../hoc/withLoadingDelay';
+
+import './Card.css';
+
+function Card({ card, changeCheck, changeMode, changeText, ...props }) {
     var [state, setState] = useState({
         newTextHeader: card.title,
         newTextBody: card.text,
@@ -33,7 +28,6 @@ function Card({
         <div className={card.checked ? 'divCard' : 'divCard new'}>
             <CardHeader
                 title={card.title}
-                viewOnly={viewOnly}
                 cardId={card.id}
                 state={state}
                 setState={setState}
@@ -44,6 +38,7 @@ function Card({
                 tmpChange={tmpChange}
                 checked={card.checked}
                 onDoubleClick={props.onDoubleClick}
+                viewOnly={props.viewOnly}
             />
             <hr />
             <CardBody
@@ -59,7 +54,6 @@ function Card({
 
 Card.propTypes = {
     card: PropTypes.object,
-    viewOnly: PropTypes.bool,
     changeCheck: PropTypes.func,
     changeMode: PropTypes.func,
     changeText: PropTypes.func,

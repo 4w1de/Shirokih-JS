@@ -6,75 +6,60 @@ import {
     AiOutlineCloseCircle,
 } from 'react-icons/ai';
 
-function CardHeader({
-    title,
-    viewOnly,
-    cardId,
-    editMode,
-    changeCheck,
-    changeMode,
-    changeText,
-    setNewText,
-    newTextHeader,
-    tmpChange,
-    ...props
-}) {
-    function setTextHeader(event) {
-        let text = event.target.value;
-        props.setState({
-            ...props.state,
-            newTextHeader: text,
-        });
-    }
-
-    return (
-        <div className="cardHeader" onDoubleClick={props.onDoubleClick}>
-            {!editMode ? (
-                <>
-                    <h2>{title}</h2>
-                    {viewOnly ? (
-                        <div className="divEmpty" />
-                    ) : (
-                        <>
-                            <AiOutlineEdit
+class CardHeader extends React.Component {
+    render() {
+        return (
+            <div
+                className="cardHeader"
+                onDoubleClick={this.props.onDoubleClick}>
+                {!this.props.editMode ? (
+                    <>
+                        <h2>{this.props.title}</h2>
+                        {this.props.viewOnly ? (
+                            <div className="divEmpty" />
+                        ) : (
+                            <>
+                                <AiOutlineEdit
+                                    size="30px"
+                                    style={{
+                                        margin: 'auto 10px auto 0',
+                                        marginLeft: 'auto',
+                                    }}
+                                    onClick={this.props.changeMode}
+                                />
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={this.props.changeCheck}
+                                    checked={this.props.checked}
+                                />
+                            </>
+                        )}
+                    </>
+                ) : (
+                    <>
+                        <input
+                            className="input"
+                            defaultValue={this.props.title}
+                            onChange={this.props.setTextHeader}
+                            ref={this.props.titleRef}
+                        />
+                        <div style={{ margin: 'auto -10px auto auto' }}>
+                            <AiOutlineCheck
                                 size="30px"
-                                style={{
-                                    margin: 'auto 10px auto 0',
-                                    marginLeft: 'auto',
-                                }}
-                                onClick={changeMode}
+                                style={{ marginRight: 10 }}
+                                onClick={this.props.changeText}
                             />
-                            <input
-                                type="checkbox"
-                                className="checkbox"
-                                onChange={changeCheck}
-                                checked={props.checked}
+                            <AiOutlineCloseCircle
+                                size="30px"
+                                onClick={this.props.changeMode}
                             />
-                        </>
-                    )}
-                </>
-            ) : (
-                <>
-                    <input
-                        className="input"
-                        defaultValue={title}
-                        onChange={setTextHeader}
-                    />
-                    <div style={{ margin: 'auto -10px auto auto' }}>
-                        <AiOutlineCheck
-                            size="30px"
-                            style={{ marginRight: 10 }}
-                            onClick={tmpChange}
-                        />
-                        <AiOutlineCloseCircle
-                            size="30px"
-                            onClick={changeMode}
-                        />
-                    </div>
-                </>
-            )}
-        </div>
-    );
+                        </div>
+                    </>
+                )}
+            </div>
+        );
+    }
 }
 
 export default CardHeader;

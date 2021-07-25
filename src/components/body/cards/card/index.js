@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CardHeader from './CardHeader';
 import CardBody from './CardBody';
 
@@ -7,49 +7,52 @@ import withLoadingDelay from '../../../../hoc/withLoadingDelay';
 
 import './Card.css';
 
-function Card({ card, changeCheck, changeMode, changeText, ...props }) {
-    var [state, setState] = useState({
-        newTextHeader: card.title,
-        newTextBody: card.text,
-    });
+class Card extends React.Component {
+    constructor(props) {
+        super(props);
 
-    const tmpChange = () => {
-        changeText(card.id, state.newTextHeader, state.newTextBody);
-    };
-    const tmpChangeMode = () => {
-        setState({
-            newTextHeader: card.title,
-            newTextBody: card.text,
-        });
-        changeMode();
-    };
+        this.titleRef = React.createRef();
+        this.textRef = React.createRef();
+        this.changeMode = this.changeMode.bind(this);
+        this.changeText = this.changeText.bind(this);
+    }
 
-    return (
-        <div className={card.checked ? 'divCard' : 'divCard new'}>
-            <CardHeader
-                title={card.title}
-                cardId={card.id}
-                state={state}
-                setState={setState}
-                editMode={card.editMode}
-                changeCheck={changeCheck}
-                changeMode={tmpChangeMode}
-                changeText={changeText}
-                tmpChange={tmpChange}
-                checked={card.checked}
-                onDoubleClick={props.onDoubleClick}
-                viewOnly={props.viewOnly}
-            />
-            <hr />
-            <CardBody
-                text={card.text}
-                state={state}
-                setState={setState}
-                editMode={card.editMode}
-                onDoubleClick={props.onDoubleClick}
-            />
-        </div>
-    );
+    changeMode() {
+        this.props.changeMode();
+    }
+
+    changeText() {
+        let newTitle = this.titleRef.current.value;
+        let newText = this.textRef.current.value;
+        this.props.changeText(this.props.card.id, newTitle, newText);
+    }
+
+    render() {
+        return (
+            <div
+                className={this.props.card.checked ? 'divCard' : 'divCard new'}>
+                <CardHeader
+                    cardID={this.props.card.id}
+                    titleRef={this.titleRef}
+                    title={this.props.card.title}
+                    editMode={this.props.card.editMode}
+                    changeCheck={this.props.changeCheck}
+                    changeMode={this.changeMode}
+                    checked={this.props.card.checked}
+                    onDoubleClick={this.props.onDoubleClick}
+                    viewOnly={this.props.viewOnly}
+                    changeText={this.changeText}
+                />
+                <hr />
+                <CardBody
+                    textRef={this.textRef}
+                    text={this.props.card.text}
+                    editMode={this.props.card.editMode}
+                    onDoubleClick={this.props.onDoubleClick}
+                />
+            </div>
+        );
+    }
 }
 
 Card.propTypes = {
@@ -59,4 +62,5 @@ Card.propTypes = {
     changeText: PropTypes.func,
 };
 
-export default withLoadingDelay(Card);
+//export default withLoadingDelay(Card);
+export default Card;

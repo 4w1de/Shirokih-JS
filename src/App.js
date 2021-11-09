@@ -7,7 +7,7 @@ class App extends React.Component {
         return (
             <>
                 <Header />
-                <Body />
+                <Body />asd asdasdas
             </>
         );
     }

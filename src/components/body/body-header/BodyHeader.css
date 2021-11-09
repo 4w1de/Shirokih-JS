@@ -1,15 +1,30 @@
-.divButton {
+.div-button {
     display: flex;
+    float: right;
+    padding: 20px 180px 0 0;
 }
-.labelBtn {
+.label-btn {
     display: flex;
     width: 170px;
-    margin-left: 10px;
+    margin-right: 20px;
     cursor: pointer;
+    background-color: #3f72af;
+    border: 2px solid #112d4e00;
+    color: #dbe2ef;
+    border-radius: 0.25rem;
+    padding: 0.25em 0.4em;
+}
+.settings {
+    width: 200px;
+}
+.label-btn:hover {
+    border: 2px solid #112d4e;
 }
 h2 {
-    font-size: 1.5em;
-    color: white;
     font-weight: bolder;
     margin: auto 0;
+}
+.div-body-header {
+    display: inline-block;
+    width: 100%;
 }

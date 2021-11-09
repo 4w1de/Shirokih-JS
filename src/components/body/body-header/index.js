@@ -1,30 +1,53 @@
 import React from 'react';
-import { CardsContextConsumer } from '../../../context/CardContext';
+import ButtonBodyHeader from './ButtonBodyHeader';
+
+import { connect } from 'react-redux';
+import { onAddCard, onRemoveCards } from '../../../store/cards/actions';
+
 import './BodyHeader.css';
-import BtnAddCard from './Button/BtnAddCard';
-import BtnDelCard from './Button/BtnDelCard';
-import CheckViewOnly from './Button/CheckViewOnly';
 
 class BodyHeader extends React.Component {
     render() {
         return (
-            <CardsContextConsumer>
-                {(context) => (
-                    <>
-                        <div className="divButton">
-                            <BtnAddCard addCard={context.addCard} />
-                            <BtnDelCard deleteCard={context.deleteCard} />
-                        </div>
-                        <CheckViewOnly
-                            changeView={this.props.changeView}
-                            viewOnly={this.props.viewOnly}
-                            textCheck={this.props.textCheck}
+            <div className="div-body-header">
+                {this.props.role === 'Администратор' ? (
+                    <ButtonBodyHeader
+                        isBtnForCards={false}
+                        nameIcon="AiOutlineSetting"
+                        title="НАСТРОЙКИ"
+                    />
+                ) : null}
+                {!this.props.viewOnly ? (
+                    <div className="div-button">
+                        <ButtonBodyHeader
+                            isBtnForCards={true}
+                            nameIcon="AiOutlinePlus"
+                            title="ДОБАВИТЬ"
+                            eventForCards={this.props.onAddCard}
                         />
-                    </>
-                )}
-            </CardsContextConsumer>
+                        <ButtonBodyHeader
+                            isBtnForCards={true}
+                            nameIcon="AiOutlineDelete"
+                            title="УДАЛИТЬ"
+                            eventForCards={this.props.onRemoveCards}
+                        />
+                    </div>
+                ) : null}
+            </div>
         );
     }
 }
 
-export default BodyHeader;
+const mapStateToProps = (state) => {
+    return {
+        role: state.auth.role,
+        viewOnly: state.cards.viewOnly,
+    };
+};
+
+const mapDispatchToProps = {
+    onAddCard,
+    onRemoveCards,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BodyHeader);

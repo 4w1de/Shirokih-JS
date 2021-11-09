@@ -1,5 +1,7 @@
 .divBody {
     position: absolute;
     width: 100%;
-    background-color: rgb(87, 87, 87);
+    min-height: 900px;
+    background: linear-gradient(25deg, #f9f7f7, #dbe2ef);
+    background-size: auto;
 }

@@ -1,40 +1,44 @@
 .divCard {
     width: 400px;
     height: 500px;
-    margin: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(0, 0, 0, 0.39);
-    color: white;
-    border: 2px ridge white;
+    margin: 0 auto 20px auto;
+    background-color: #3f72af;
+    color: #dbe2ef;
+    border: 2px solid #212529;
+    border-radius: 0.55rem;
 }
 .new {
-    background-color: rgba(201, 25, 25, 0.39);
-    border: 2px solid black;
+    background-color: #dbe2ef;
+    color: #212529;
 }
 hr {
     width: 380px;
+    height: 1px;
     margin: 0 auto;
-    background-color: white;
+    background-color: #212529;
 }
 .cardHeader {
     width: 95%;
     height: 50px;
-    margin: 10px auto;
+    padding: 0 0 0 10px;
+    display: flex;
+}
+.cardBody {
+    width: 100%;
+    height: 50px;
+    padding: 0 10px 0 10px;
     display: flex;
 }
 .bodyText {
     word-break: break-all;
 }
 textarea {
-    width: 95%;
+    width: 100%;
     height: 350px;
     margin: 0 auto;
-    padding: 10px;
     outline: none;
-    border: 2px inset rgb(134, 134, 134);
     background: none;
-    color: white;
+    color: #212529;
     resize: none;
 }
 .divEmpty {
@@ -43,9 +47,9 @@ textarea {
 }
 .checkbox {
     transform: scale(2);
-    margin: auto 15px;
+    margin: auto 0 auto 10px;
 }
-h3 {
+h2 {
     width: 70%;
     margin: auto 10px;
     white-space: nowrap;
@@ -54,9 +58,11 @@ h3 {
     font-size: 1.17em;
 }
 .input {
-    background-color: rgba(138, 138, 138, 0.493);
-    font-size: 19px;
+    background-color: #dbe2ef;
+    font-size: 24px;
     font-weight: bolder;
-    color: rgb(255, 255, 255);
-    padding: 10px;
+    color: #212529;
+    margin: auto 0 auto 0;
+    height: 40px;
+    width: 70%;
 }

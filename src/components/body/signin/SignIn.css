@@ -1,0 +1,53 @@
+.div-signIn {
+    width: 400px;
+    height: 500px;
+    margin: 20px auto;
+    background-color: #dbe2ef;
+    border: 2px solid #212529;
+    border-radius: 0.55rem;
+}
+h1 {
+    color: #212529;
+    font-size: 32px;
+    font-weight: bolder;
+    margin: 0 0 5px 10px;
+}
+.div-login {
+    display: flex;
+    width: 170px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+    margin: 175px auto;
+    background-color: #3f72af;
+    border: 2px solid #112d4e;
+    color: #dbe2ef;
+    border-radius: 0.25rem;
+    padding: 0.25em 0.4em;
+}
+.div-login:hover {
+    color: #dbe2ef;
+    border: 2px solid #dbe2ef;
+    cursor: pointer;
+    background-color: #112d4e;
+}
+.div-login-disabled {
+    display: flex;
+    width: 170px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+    margin: 175px auto;
+    background-color: #4c4f52;
+    border: 2px solid #112d4e;
+    color: #dbe2ef;
+    border-radius: 0.25rem;
+    padding: 0.25em 0.4em;
+}
+b {
+    height: 24px;
+    margin: 0 auto;
+    line-height: 24px;
+}
